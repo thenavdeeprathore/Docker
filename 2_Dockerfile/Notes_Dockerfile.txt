@@ -1,0 +1,13 @@
+# Three ways to build a docker image
+
+# docker build .
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+<none>              <none>              cdbf6d352f19        2 minutes ago       155MB
+
+# docker build -t thenavdeeprathore/nginx .
+REPOSITORY                TAG                 IMAGE ID            CREATED             SIZE
+thenavdeeprathore/nginx   latest              1a66f1ba77eb        3 seconds ago       155MB
+
+# docker build -t navdeep-nginx:1.18.0 .
+REPOSITORY                TAG                 IMAGE ID            CREATED              SIZE
+navdeep-nginx             1.18.0              1a66f1ba77eb        About a minute ago   155MB
