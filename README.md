@@ -40,6 +40,8 @@ sudo systemctl start docker
 ```
 ## Running docker commands as non-root user
 ```
+sudo usermod -aG docker $USER
+OR
 getent group docker
 sudo gpasswd -a <user> docker
 getent group docker
