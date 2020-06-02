@@ -1,0 +1,17 @@
+# User-defined Bridge Network
+# NAME is not important, you can create a network with any user-defined name but driver is important
+
+docker network create --driver bridge mybridge
+
+# NOTE: If you don't specify a driver then by default docker will take bridge driver
+docker network create mynetwork
+
+brctl show
+
+docker container run -dt --name demo1 --network mynetwork ubuntu
+docker container run -dt --name demo2 --network mynetwork ubuntu
+docker container exec -it demo1 bash
+apt-get update && apt-get install net-tools && apt-get install iputils-ping
+ping 172.17.0.3
+# user-defined bridges provided automatic DNS resolution between containers
+ping demo2

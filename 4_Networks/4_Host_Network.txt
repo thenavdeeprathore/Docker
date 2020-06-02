@@ -1,0 +1,15 @@
+# Host Network
+# This driver removes the network isolation between the docker host and the docker containers to use the host's networking directly.
+
+docker container run -dt --name myhost --network host ubuntu
+docker container run -dt --name mybridge ubuntu
+docker container exec -it myhost bash
+apt-get update && apt-get install net-tools
+netstat -ntlp
+# You can see all the ports including host and container ports
+ifconfig
+# You can see all the interfaces associated with the host
+apt-get install nginx -y
+/etc/init.d/nginx start
+netstat -ntlp
+# nginx is listening on the port 80 which is of the host

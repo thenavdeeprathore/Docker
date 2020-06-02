@@ -1,0 +1,8 @@
+# Linking containers -- A legacy approach
+
+docker container run -dt --name container01 busybox sh
+docker container run -dt --link container01:container --name container02 busybox sh
+
+docker container exec -it container02 sh
+ping container
+cat /etc/hosts

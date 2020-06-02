@@ -1,0 +1,29 @@
+# Bridge Network
+
+# Bridge is the default network driver for Docker
+# When you start Docker, a default network (also known as bridge) is created automatically, and newly started containers connect to it.
+# A bridge network uses a software bridge which allows containers connected to the same bridge network to communicate, while providing isolation
+# from containers which are not connected to that bridge network.
+
+
+docker container run -dt --name demo1 ubuntu
+docker container run -dt --name demo2 ubuntu
+
+
+docker ps
+    CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS               NAMES
+    1f1ac2803c26        ubuntu              "/bin/bash"         About a minute ago   Up About a minute                       demo2
+    8b0d20fea640        ubuntu              "/bin/bash"         About a minute ago   Up About a minute                       demo1
+
+
+docker container exec -it demo1 bash
+apt-get update && apt-get install net-tools
+apt-get install iputils-ping
+ping 172.17.0.3
+route -n
+    Kernel IP routing table
+    Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+    0.0.0.0         172.17.0.1      0.0.0.0         UG    0      0        0 eth0
+    172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 eth0
+
+

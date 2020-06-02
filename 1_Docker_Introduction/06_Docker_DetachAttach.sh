@@ -21,7 +21,7 @@ Ctrl + C
 docker container run --publish 80:80 --detach nginx
 
 # --name will print name for the docker
-docker container run -p 8080:80 -d --name webserver nginx
+docker container run -p 8080:80 -dt --name webserver nginx
 
 # check logs
 docker container logs webserver

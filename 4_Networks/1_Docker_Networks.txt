@@ -1,0 +1,36 @@
+# Network types available in Docker CE:
+bridge
+host
+none
+# Network types available in Docker EE:
+bridge
+host
+none
+overlay
+macvlan
+
+
+docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+fc44c7d6b6c2        bridge              bridge              local
+33851302df6b        host                host                local
+079ad51ff550        none                null                local
+
+
+docker network inspect bridge
+"Subnet": "172.17.0.0/16",
+    "Gateway": "172.17.0.1"
+
+
+ifconfig
+docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+
+
+hostname -I
+192.168.66.131 172.17.0.1
+
+
+# You can launch container to other networks, by default it takes bridge network
+docker container run -d --name myos --network host ubuntu
+

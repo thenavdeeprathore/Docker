@@ -1,0 +1,25 @@
+# None Network
+# If you want to complete disable the network stack on container, you can use the none network
+# This mode will not configure any IP of the container and does not have any access to the external network as well as for other containers
+
+
+
+docker container run -dt --name mynone --network none alpine
+docker container exec -it mynone ash
+ifconfig
+# This specific container can't connect to the outside world
+ping google.com
+
+
+
+
+# Publishing EXPOSED ports of the containers {publishing containers port to host}
+# Way 1:
+docker container run -dt --name webserver -p 80:80 nginx
+curl 127.0.0.1:80
+
+# Way 2: publish all
+# all exposed ports are published to random ports of the host
+docker container run -dt --name webserver -P nginx
+# A random port will be exposed
+curl 127.0.0.1:32768
