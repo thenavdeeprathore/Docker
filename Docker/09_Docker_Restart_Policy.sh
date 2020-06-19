@@ -7,10 +7,10 @@
 # unless-stopped    : Restart the container unless it is explicitly stopped or docker itself is stopped or restarted
 # always            : Always restart the container if it stops
 
-docker container run -p 8080:80 -d --name webserver nginx
+docker container run -p 8080:80 -dt --name webserver nginx
 systemctl restart docker
 # container stopped
 
-docker container run -p 8080:80 -d --name webserver --restart unless-stopped nginx
+docker container run -p 8080:80 -dt --name webserver --restart unless-stopped nginx
 systemctl restart docker
 # container is still running

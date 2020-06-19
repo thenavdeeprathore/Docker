@@ -5,6 +5,9 @@ docker container run --publish 8080:80 nginx
 # 3. Opened port / Exposed port 8080 on the host IP
 # 4. Routes that traffic to the container IP, port 80
 
+# open browser and enter url 192.168.66.131:8080
+http://192.168.0.101:8080/
+
 # NOTE: we can't use the same exposed host port for other running containers. Always use unique host port bindings
 navdeep@navdeeplabs:~$ docker run -p 8080:80 nginx
 docker: Error response from daemon: driver failed programming external connectivity on endpoint exciting_visvesvaraya 
