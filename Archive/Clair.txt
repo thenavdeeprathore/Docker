@@ -1,0 +1,33 @@
+What is Clair?
+
+Clair is a popular open source vulnerability scanning solution for docker images made by CoreOS. 
+Clair is also integrated with quay.io public docker registry and Quay Enterprise, both products of CoreOS.
+
+As a source of vulnerabilities, it uses CVE (Common Vulnerabilities and Exposures) data sources like NIST NVD as well as 
+security bug trackers of the specific Linux distributions supported by Clair.
+
+Clair doesn’t have a web UI or even a command-line tool; so the only way to work with it is via its REST API or a third-party CLI tool.
+
+
+
+Architecture and Clair components
+Clair is composed of 2 components:
+
+Clair
+        REST API server
+        CVE Updater which takes care of updating database of vulnerabilities
+        List of CVE data sources
+PostgreSQL 9.4+
+        Storage of vulnerabilities database and results of analysis of uploaded docker image layers
+
+
+
+
+
+
+This is where clair-scanner comes into place. The clair-scanner does the following:
+
+-   Scans an image against Clair server
+-   Compares the vulnerabilities against a whitelist
+-   Tells you if there are vulnerabilities that are not in the whitelist and fails
+-   If everything is fine it completes correctly
